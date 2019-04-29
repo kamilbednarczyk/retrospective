@@ -4,12 +4,12 @@ from django.shortcuts import render
 
 
 def main(request):
-    pass
+    return render(request, 'retro_cool/main.html')
 
 
 def add(request):
-    pass
+    return render(request, 'retro_cool/add.html')
 
 
 def view(request):
-    pass
+    return render(request, 'retro_cool/view.html')
