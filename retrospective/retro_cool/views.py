@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Retrospective
+from .models import KeepItem
+from .models import ImproveItem
 
 # Create your views here.
 
@@ -18,7 +20,9 @@ def add(request):
 def view(request):
     if(request.GET.get('select_retro')):
         retro_id = request.GET.get('retro')
-        
+        toKeep = KeepItem.objects.all().filter(id=retro_id)
+        toImprove = ImproveItem.objects.all().filter(id=retro_id)
+        args = {"data": [toKeep, toImprove]}
         # all_retro = Retrospective.objects.all()
         # retro = all_retro[retro_id]
         # args = {}
