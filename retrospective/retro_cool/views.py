@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Retrospective
-from .models import KeepItem
-from .models import ImproveItem
+from django.http import HttpResponseRedirect
+from .models import Retrospective, KeepItem, ImproveItem
+import json
 
 # Create your views here.
 
@@ -14,7 +14,18 @@ def main(request):
 
 
 def add(request):
-    return render(request, 'retro_cool/add.html')
+    if request.method == "POST":
+
+        table = json.loads(request.body.decode('utf-8'))
+        for keep_item in table["toKeep"]:
+            to_save = KeepItem(retrospective=table["boardId"], text=keep_item)
+            to_save.save()
+        for improve_item in table["toImprove"]:
+            to_save = ImproveItem(retrospective=table["boardId"], text=improve_item)
+            to_save.save()
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'retro_cool/add.html')
 
 
 def view(request):

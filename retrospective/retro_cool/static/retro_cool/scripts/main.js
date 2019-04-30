@@ -46,7 +46,7 @@ function sendBoard() {
     request.onload = function() {
         window.location = this.responseURL;
     };
-    request.open("POST", "/test_add_post");
+    request.open("POST", "/add");
     request.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
     request.send(boardData);
 }
