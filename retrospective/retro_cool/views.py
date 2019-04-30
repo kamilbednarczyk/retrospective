@@ -1,10 +1,15 @@
 from django.shortcuts import render
+from .models import Retrospective
 
 # Create your views here.
 
 
 def main(request):
-    return render(request, 'retro_cool/main.html')
+    args = {}
+    data = Retrospective.objects.all()
+    args['data'] = data
+    print(args)
+    return render(request, 'retro_cool/main.html', args)
 
 
 def add(request):
