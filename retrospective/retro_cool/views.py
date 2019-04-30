@@ -16,27 +16,27 @@ def main(request):
 
 def add(request):
     if request.method == "POST":
-
         table = json.loads(request.body.decode('utf-8'))
+        print(request.body)
+        retro = Retrospective.objects.get(id=table["boardId"])
         for keep_item in table["toKeep"]:
-            to_save = KeepItem(retrospective=table["boardId"], text=keep_item)
+            to_save = KeepItem(retrospective=retro, text=keep_item)
             to_save.save()
         for improve_item in table["toImprove"]:
-            to_save = ImproveItem(retrospective=table["boardId"], text=improve_item)
+            to_save = ImproveItem(retrospective=retro, text=improve_item)
             to_save.save()
         return HttpResponseRedirect('/')
-    else:
-        return render(request, 'retro_cool/add.html')
 
-    if request.GET.get('retroSubmit'):
-        new_room = request.GET.get('newRoom')
-        new_date = request.GET.get('newDate')
+    if request.method == "GET":
+        if request.GET.get('retroSubmit'):
+            new_room = request.GET.get('newRoom')
+            new_date = request.GET.get('newDate')
 
-    new_id = get_new_retrospective_id(new_room, new_date)
+            new_id = get_new_retrospective_id(new_room, new_date)
 
-    context = {'roomName' : new_room, 'date' : new_date, 'boardId' : new_id}
+        context = {'roomName' : new_room, 'date' : new_date, 'boardId' : new_id}
 
-    return render(request, 'retro_cool/add.html', context)
+        return render(request, 'retro_cool/add.html', context)
 
 
 def view(request):
