@@ -3,7 +3,8 @@
 {% block content %}
 <h3> View date: </h3>
 <h3>{{args.items}}</h3>
-<form action="view.html" method="POST">
+<form action="view" method="POST">
+{% csrf_token %}
     <select name="retro">
     {% for v in data %}
         <option value="{{v.id}}">{{v.room}} {{v.date}}</option>
