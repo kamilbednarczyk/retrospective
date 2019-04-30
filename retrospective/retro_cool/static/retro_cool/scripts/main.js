@@ -44,6 +44,7 @@ function sendBoard() {
     let boardData = getRetroJSON();
     let request = new XMLHttpRequest();
     request.onload = function() {
+        console.log(this.responseURL);
         window.location = this.responseURL;
     };
     request.open("POST", "/add");
@@ -72,7 +73,7 @@ function getRetroJSON() {
     let toKeepList = getListOfItems(toKeep);
     let toImprove = document.getElementById("to-improve-elements");
     let toImproveList = getListOfItems(toImprove);
-    let boardId = document.getElementById("boardId");
+    let boardId = document.getElementsByClassName("retro-board")[0].getAttribute("id");
 
     let boardData = {"toKeep": toKeepList, "toImprove": toImproveList, "boardId": boardId};
     return JSON.stringify(boardData);
