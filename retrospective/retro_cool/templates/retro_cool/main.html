@@ -1,6 +1,7 @@
-{% extends "retro_cool/base.html" %}
+{% extends "retro_cool/createRetro.html" %}
+
 {% block content %}
-<h3> View date: </h3></br>
+<h3> View date: </h3>
 <h3>{{args.items}}</h3>
 <form action="view.html" method="POST">
     <select name="retro">
