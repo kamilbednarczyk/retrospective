@@ -1,5 +1,30 @@
 {% extends "retro_cool/base.html" %}
 {% block content %}
-<h1>ADD</h1>
+
+<h2> Room: {{ roomName }} </h2>
+<h2> Date: {{ date }} </h2>
+<div id="{{ boardId }}" class="retro-board">
+    <div class="board-row">
+        <h2 class="board-row-title"> TO KEEP </h2>
+        <div id="to-keep-elements" class="item-list">
+
+        </div>
+        <div class="form-row">
+            <input id="to-keep-entry" type="text">
+            <button onclick="addToKeepItem()">Add</button>
+        </div>
+    </div>
+    <div class="board-row">
+        <h2 class="board-row-title"> TO IMPROVE </h2>
+        <div id="to-improve-elements" class="item-list">
+
+        </div>
+        <div class="form-row">
+            <input id="to-improve-entry" type="text">
+            <button onclick="addToImproveItem()">Add</button>
+        </div>
+    </div>
+</div>
+<button onclick="sendBoard()">Save Retrospection</button>
 
 {% endblock %}
