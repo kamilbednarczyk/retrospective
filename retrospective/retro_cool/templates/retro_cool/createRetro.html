@@ -3,7 +3,8 @@
 {% block createRetro %}
 
 <h3>Add new Retrospective</h3>
-<form action="add" method="post">{% csrf_token %}
+<form action="add" method="get">
+    <!--{% csrf_token %}-->
     <input type="text" value="room name" name="newRoom">
     <input type="date" name="newDate">
     <input type="submit" class="btn" value="Send" name="retroSubmit">
