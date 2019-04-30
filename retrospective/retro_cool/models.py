@@ -3,16 +3,20 @@ from django.db import models
 # Create your models here.
 
 
-class Retrospective:
+class Retrospective(models.Model):
 
-    def __init__(self, room, date, keep=[], improve=[]):
-        self.room = room
-        self.date = date
-        self.keep = keep
-        self.improve = improve
+    room = models.CharField(max_length = 20)
+    date = models.DateField()
 
-    def add_to_keep(self, item):
-        self.keep.append(item)
 
-    def add_to_improve(self, item):
-        self.improve.append(item)
+class KeepItem(models.Model):
+
+    retrospective = models.ForeignKey(Retrospective, on_delete=models.CASCADE)
+    text = models.CharField(max_length=100)
+
+
+class ImproveItem(models.Model):
+
+    retrospective = models.ForeignKey(Retrospective, on_delete=models.CASCADE)
+    text = models.CharField(max_length=100)
+
