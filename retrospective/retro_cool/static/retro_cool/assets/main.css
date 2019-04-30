@@ -1,0 +1,40 @@
+
+/* Retro board form */
+
+.retro-board {
+    display: flex;
+}
+
+.board-row {
+    border: 1px solid black;
+    flex-basis: 50%;
+    flex-grow: 0;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-row-title {
+    display: block;
+}
+
+.form-row {
+    padding: 10px 5px;
+}
+
+.item-list {
+    width: 90%;
+    max-width: 90%;
+}
+
+.item {
+    width: 80%;
+    max-width: 80%;
+    margin: auto;
+}
+
+.item p {
+    width: 90%;
+    word-break: break-all;
+}
