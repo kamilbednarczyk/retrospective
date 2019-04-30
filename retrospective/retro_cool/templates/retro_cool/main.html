@@ -2,13 +2,13 @@
 {% block content %}
 <h3> View date: </h3></br>
 <h3>{{args.items}}</h3>
-<form action="#" method="GET">
+<form action="view.html" method="POST">
     <select name="retro">
     {% for v in data %}
-        <option value="{{v.room}} {{v.date}}">{{v.room}} {{v.date}}</option>
+        <option value="{{v.id}}">{{v.room}} {{v.date}}</option>
     {% endfor %}
     </select>
-    <input type="submit" class="btn" value="Send" name="namesubmit">
+    <input type="submit" class="btn" value="Send" name="select_retro">
 </form></br>
 <h3><a href="/add">Add new retrospective</a></h3>
 
