@@ -1,13 +1,15 @@
 {% extends "retro_cool/base.html" %}
 {% block content %}
 <h1>To Keep</h1>
-{% for value in data[0] %}
-<h2>{{value}}</h2>
-{% endfor %}
+{% for table in data %}
 
-<h1>To Improve</h1>
-{% for value in data[1] %}
-<h2>{{value}}</h2>
+<h2>{{table.retrospective}}</h2>
+<h2>{{table.text}}</h2>
+
+{% for value in table %}
+<h2>{{value.retrospective}}</h2>
+<h2>{{value.text}}</h2>
+{% endfor %}
 {% endfor %}
 
 
