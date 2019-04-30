@@ -40,20 +40,17 @@ def add(request):
 
 
 def view(request):
-    if(request.GET.get('select_retro')):
-        retro_id = request.GET.get('retro')
-        toKeep = KeepItem.objects.all().filter(id=retro_id)
-        toImprove = ImproveItem.objects.all().filter(id=retro_id)
-        args = {"data": [toKeep, toImprove]}
-        # all_retro = Retrospective.objects.all()
-        # retro = all_retro[retro_id]
-        # args = {}
-        # args['data'] = retro
+    if(request.POST.get('select_retro')):
+        print("dupa")
+        retro_id = request.POST.get('retro')
+        print(retro_id)
+        retro = Retrospective.objects.get(id=retro_id)
+        print(retro)
+        toKeep = KeepItem.objects.all().filter(retrospective=retro)
+        toImprove = ImproveItem.objects.all().filter(retrospective=retro)
+        print(toKeep)
+        args = {"toKeep": toKeep, "toImprove": toImprove}
         return render(request, 'retro_cool/view.html', args)
-        # Name(title=name_str).save()
-        # for name in Name.objects.all():
-        #     print(name)
-        #     context = {'names': [name_str]}.
     return render(request, 'retro_cool/view.html')
 
 
