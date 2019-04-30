@@ -1,6 +1,7 @@
-{% extends "retro_cool/base.html" %}
+{% extends "retro_cool/createRetro.html" %}
+
 {% block content %}
-<h3> View date: </h3></br>
+<h3> View date: </h3>
 <h3>{{args.items}}</h3>
 <form action="#" method="GET">
     <select name="retro">
@@ -9,7 +10,6 @@
     {% endfor %}
     </select>
     <input type="submit" class="btn" value="Send" name="namesubmit">
-</form></br>
-<h3><a href="/add">Add new retrospective</a></h3>
+</form>
 
 {% endblock %}
